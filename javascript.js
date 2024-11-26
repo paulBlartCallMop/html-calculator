@@ -17,3 +17,28 @@ opKeys.forEach((key) => {
     button.textContent = key;
     operators.appendChild(button);
 })
+
+let num1 = '';
+let num2 = '';
+let operation;
+const input = document.querySelector('.input');
+const display = document.querySelector('.display');
+
+input.addEventListener('click',(event)=>{
+    let key = event.target.textContent;
+    if (numkeys.includes(key)) {
+        if (operation === undefined) {
+            num1 = num1 + key;
+        } else {
+            num2 = num2 + key;
+        }
+    }
+    if (opKeys.includes(key)) {
+        if (key === '=') {
+            alert('cool');
+        } else {
+            operation = key;
+        }
+    }
+    display.textContent = `${num1} ${operation === undefined ? '' : operation} ${num2}`;
+});
